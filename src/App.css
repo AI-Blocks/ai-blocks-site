@@ -1,0 +1,40 @@
+.wrapper {
+    --left-margin: 2.5vw;
+    --right-margin: 2.5vw;
+    --nav-margin-top: 1em;
+    margin-left: var(--left-margin);
+    margin-right: var(--right-margin);
+}
+
+nav {
+    width: 100%;
+    margin-top: var(--nav-margin-top);
+    height: 5em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav img {
+    margin:0;
+    height: 4em;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    list-style: none;
+    margin-left: min(1.3em, 2vw);
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--color-bright);
+    font-family: "Museo", serif;
+    font-size: 1.2em;
+}
