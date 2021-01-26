@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 const TitleComponent = ({ title }) => {
-    let defaultTitle = "SQ Mah";
+    let defaultTitle = "AI Blocks";
     return (
         <Helmet>
             <title>{title ? title : defaultTitle}</title>

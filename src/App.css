@@ -1,24 +1,57 @@
-.wrapper {
-    --left-margin: 2.5vw;
-    --right-margin: 2.5vw;
-    --nav-margin-top: 1em;
-    margin-left: var(--left-margin);
-    margin-right: var(--right-margin);
+:root {
+    --content-width: 1200px;
+}
+
+html,body  {
+    margin: 0;
+    padding: 0;
+    font-family: "Proxima Nova Bold", sans-serif;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    position: relative;
+}
+
+img {
+    height: 60px;
+}
+
+#animation {
+    width: 118vw;
+    height: 60vw;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    margin-left: -14vw;
+    margin-top: -40vw;
+    transform: rotate(-15deg);
+    z-index: -1;
+    overflow-x: hidden;
+    background-color: black;
 }
 
 nav {
     width: 100%;
-    margin-top: var(--nav-margin-top);
     height: 5em;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    z-index: 10000 !important;
 }
 
 nav img {
     margin:0;
-    height: 4em;
+    height: 1.5em;
 }
 
 nav ul {
@@ -34,7 +67,83 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--color-bright);
-    font-family: "Museo", serif;
+    color: var(--color-accent);
+    font-family: "Proxima Nova Bold", sans-serif;
     font-size: 1.2em;
+}
+
+h1 {
+
+    font-size: 7em;
+    margin: 0;
+}
+
+h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.accent {
+    color: var(--color-accent);
+}
+
+.accentDarker {
+    color: var(--color-accent-darker);
+}
+
+.bgHeader {
+    position: relative;
+    margin-top: 1.5em;
+    margin-bottom: 0;
+    text-align: center;
+    color: var(--color-accent);
+    z-index: 0;
+}
+
+.bgHeaderFancy {
+    mix-blend-mode: lighten;
+    z-index: -1;
+}
+
+.centerGrid {
+    text-align: center;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1200px){
+    .wrapper {
+        width: 100%
+    }
+    #animation {
+        margin-top: -20vw;
+    }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 650px){
+    #animation {
+        margin-top: -15vw;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .bgHeader {
+        margin-top: 1em;
+        font-size: 4em;
+    }
+    nav ul li a {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (min-width: 2600px){
+    #animation {
+        transform: rotate(-10deg);
+        margin-top: -45vw;
+    }
 }

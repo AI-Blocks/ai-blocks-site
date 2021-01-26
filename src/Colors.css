@@ -1,4 +1,5 @@
-html {
-    --color-bright: #fa7268;
-    --color-darker: #594157;
+:root {
+    --color-accent: #fa7268;
+    --color-accent-darker: #594157;
+    --color-background-grey: #f6f9fc;
 }
