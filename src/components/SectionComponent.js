@@ -1,18 +1,21 @@
 import React from 'react';
 import './SectionComponent.css';
 import './../Colors.css'
+import { Element } from 'react-scroll';
 
 function SectionComponent(props) {
     const theme = props.theme ? props.theme: "defaultSection";
     const spaceClass = props.noSpace ? "noSpace": "defaultSection";
     return (
-        <section className={theme + " " + spaceClass}>
-            <div className="wrapper">
-                <div className="content">
-                    {props.children}
+        <Element name={props.id}>
+            <section className={theme + " " + spaceClass}>
+                <div className="wrapper">
+                    <div className="content">
+                        {props.children}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </Element>
     );
 }
 

@@ -16,8 +16,10 @@
     "react-device-detect": "^1.15.0",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-hover-video-player": "^6.7.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-scroll": "^1.8.1",
     "react-three-fiber": "^5.3.12",
     "three": "^0.124.0"
   },

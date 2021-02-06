@@ -2,14 +2,11 @@ import React from 'react';
 import './Fonts.css'
 import './Colors.css'
 import './App.css';
-import logo from './logo.svg'
-import mtr from './assets/img/clients/mtr.png'
-import hkpc from './assets/img/clients/hkpc.png'
-import customs from './assets/img/clients/customs.png'
 import {TitleComponent} from "./components/TitleComponent";
 import Grid from '@material-ui/core/Grid';
 import {SectionComponent} from "./components/SectionComponent";
 import {DotsComponent} from "./components/Dots";
+import {ProjectBox} from "./components/ProjectBox";
 import {
     BrowserView,
     MobileView,
@@ -20,6 +17,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function App() {
     return (
@@ -29,11 +27,11 @@ export default function App() {
             </div>
             <SectionComponent id={"nav"} noSpace={true}>
                 <nav>
-                    <Link to="/"><img src={logo} alt="Home"/></Link>
+                    <Link to="/"><img src="/logo.svg" alt="Home"/></Link>
                     <ul>
-                        <li><Link to="/#projects">Projects</Link></li>
-                        <li><Link to="/">Delphi</Link></li>
-                        <li><Link to="/">Contact</Link></li>
+                        <li><ScrollLink to="projects" smooth={true} duration={500}>Projects</ScrollLink></li>
+                        {/*<li><Link to="/">Delphi</Link></li>*/}
+                        <li><ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink></li>
                         {/*<li><Link to="/about">About</Link></li>*/}
                         {/*<li><Link to="/work">Work</Link></li>*/}
                         {/*<li><Link to="/projects">Projects</Link></li>*/}
@@ -74,40 +72,82 @@ function Home() {
                     <Grid item xs={12} sm={6}>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <a href="#projects"><h2 style={{textAlign: 'right'}}>Learn more &rarr;</h2></a>
+                        <Link to="/#projects"><ScrollLink to="projects" smooth={true} duration={500}>
+                            <h2 style={{textAlign: 'right'}}>See projects &rarr;</h2>
+                        </ScrollLink></Link>
                     </Grid>
                 </Grid>
             </SectionComponent>
             <SectionComponent id={"clients"}>
                 <Grid container spacing={5}>
                     <Grid item xs={12}>
-                        <h2 className={"accent"}>Selected Clients:</h2>
+                        <h2 className={"accent"}>Selected Clients</h2>
                     </Grid>
                     <Grid className={"centerGrid"} item xs={12} sm={4}>
-                        <img src={mtr} alt="MTR"/>
+                        <img src="/static/img/clients/mtr.png" alt="MTR"/>
                     </Grid>
                     <Grid className={"centerGrid"} item xs={12} sm={4}>
-                        <img src={hkpc} alt="HKPC"/>
+                        <img src="/static/img/clients/hkpc.png" alt="HKPC"/>
                     </Grid>
                     <Grid className={"centerGrid"} item xs={12} sm={4}>
-                        <img src={customs} alt="Customs"/>
+                        <img src="/static/img/clients/customs.png" alt="Customs"/>
                     </Grid>
                 </Grid>
             </SectionComponent>
             <SectionComponent id={"projects"} theme={"grey"}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <h2 className={"accent"}>Projects:</h2>
+                    <Grid item xs={12} sm={12}>
+                        <h2 className={"accent"}>Projects</h2>
                     </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid item xs={12} sm={6}>
+                        <ProjectBox
+                            name="Deep Learning License Plate Reader"
+                            desc={<p>Custom license plate reader <p className="accent">specifically for Hong Kong
+                                license plates.</p> With support for deep learning license plate deskew, and multi-line
+                                license plates.</p>}
+                            src="/static/vid/plate.mp4"
+                        />
                     </Grid>
-                    <Grid item xs={12} sm={3}>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid item xs={12} sm={6}>
+                        <ProjectBox
+                            name="Train Station Safety Net"
+                            desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
+                                The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
+                                With AI, we can help make a <p className="accent">safer journey for all.</p></p>}
+                            src="/static/vid/train_station.mp4"
+                        />
                     </Grid>
                 </Grid>
+            </SectionComponent>
+            <SectionComponent id={"contact"} theme={"dark"}>
+                <form id={"contactForm"}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={12}>
+                            <h2 className={"white"}>Contact Us</h2>
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <p className={"white"}>We'd love to hear about how we can help you with AI 🤖</p>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                                <input name="firstName" placeholder="First name" />
+                                <input name="lastName" placeholder="Last name" />
+                                <input name="email" placeholder="Email" />
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <textarea name="comment" form="contactForm">Enter text here...</textarea>
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                            <input type="submit" />
+                        </Grid>
+                    </Grid>
+                </form>
+            </SectionComponent>
+            <SectionComponent id={"footer"} theme={"dark"}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={12}>
+                            <p className={"white"}>&#169; {new Date().getFullYear()} AI Blocks Limited</p>
+                        </Grid>
+                    </Grid>
             </SectionComponent>
         </div>
     );
