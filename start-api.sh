@@ -1,0 +1,1 @@
+nohup node api/index.js > api/output.log &
