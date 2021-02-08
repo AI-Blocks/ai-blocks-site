@@ -18,8 +18,7 @@ export function ProjectBox(props) {
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         backgroundPosition: "center"
-                    }}
-                    />
+                    }}/>
                 }
                 style={{
                     width: '100%',
