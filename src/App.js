@@ -64,17 +64,17 @@ function Home() {
                         <BrowserView><h1 className="bgHeader bgHeaderFancy">WE FIND AI SOLUTIONS</h1></BrowserView>
                         <MobileView><h1 className="bgHeader">WE FIND AI SOLUTIONS</h1></MobileView>
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={12} sm={7}>
                     </Grid>
-                    <Grid item xs={12} sm={8}>
-                        <h2 style={{textAlign: 'right'}}>To the most demanding applications.</h2>
+                    <Grid item xs={12} sm={5}>
+                        <h2>To the most demanding applications.</h2>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={12} sm={7}>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <Link to="/#projects"><ScrollLink to="projects" smooth={true} duration={500}>
-                            <h2 style={{textAlign: 'right'}}>See projects &rarr;</h2>
-                        </ScrollLink></Link>
+                    <Grid item xs={12} sm={5} style={{textAlign: 'right'}}>
+                        <ScrollLink to="projects" smooth={true} duration={500}>
+                           <button className={"button-rounder"}><h2>See projects &rarr;</h2></button>
+                        </ScrollLink>
                     </Grid>
                 </Grid>
             </SectionComponent>
@@ -113,7 +113,7 @@ function Home() {
                             name="Train Station Safety Net"
                             desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
                                 The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
-                                With AI, we can help make a <p className="accent">safer journey for all.</p></p>}
+                                With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
                             src="/static/vid/train_station.mp4"
                         />
                     </Grid>
@@ -123,7 +123,7 @@ function Home() {
                 <form id={"contactForm"}>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={12}>
-                            <h2 className={"white"}>Contact Us</h2>
+                            <h2 className={"accent"}>Contact Us</h2>
                         </Grid>
                         <Grid item xs={12} sm={12}>
                             <p className={"white"}>We'd love to hear about how we can help you with AI 🤖</p>
@@ -134,7 +134,7 @@ function Home() {
                                 <input name="email" placeholder="Email" />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <textarea name="comment" form="contactForm">Enter text here...</textarea>
+                            <textarea name="comment" form="contactForm" placeholder="Enter text here..." />
                         </Grid>
                         <Grid item xs={12} sm={12}>
                             <input type="submit" />
@@ -144,8 +144,13 @@ function Home() {
             </SectionComponent>
             <SectionComponent id={"footer"} theme={"dark"}>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={12}>
-                            <p className={"white"}>&#169; {new Date().getFullYear()} AI Blocks Limited</p>
+                        <Grid item xs={12} sm={4}>
+                        </Grid>
+                        <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
+                            <img src="/logo_eng_ch.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
+                            <p className={"white"} >
+                                &#169; {new Date().getFullYear()} AI Blocks Limited
+                            </p>
                         </Grid>
                     </Grid>
             </SectionComponent>

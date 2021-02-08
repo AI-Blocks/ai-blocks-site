@@ -161,20 +161,28 @@ textarea {
     padding: 10px 15px;
     margin-bottom: 15px;
     height: 150px;
-    color: grey
+    color: grey;
+    resize: none;
 }
 
 input[type="submit"],
-.button {
+button {
     background: var(--color-accent);
     color: white;
     border: none;
-    padding: 20px;
+    padding: 20px 40px 20px 40px;
     letter-spacing: 1px;
     display: block;
     appearance: none;
     border-radius: 4px;
-    width: 100%;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.button-rounder {
+    border-radius: 50px;
+    letter-spacing: 0px;
+    font-size: 0.8em;
 }
 
 @media only screen and (min-width: 0px) and (max-width: 1200px){
@@ -201,6 +209,10 @@ input[type="submit"],
     }
     nav ul li a {
         font-size: 1em;
+    }
+
+    img {
+        height: 40px;
     }
 }
 
