@@ -43,7 +43,7 @@ function handleSubmit(e){
     }
     axios({
         method: "POST",
-        url:"http://localhost:3002/contact",
+        url:"http://www.getaiblocks.com:3002/contact/",
         data: contactState
     }).then((response)=>{
         if (response.data.status === 'success') {
