@@ -18,6 +18,7 @@ export function ProjectBox(props) {
                 }}
                 sizingMode="container"
                 hoverTargetRef={wrapperBoxRef}
+                preload="metadata"
             />
             <div className="boxDetails">
                 <h3>{props.name}</h3>
