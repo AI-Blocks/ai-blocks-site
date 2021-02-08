@@ -37,7 +37,7 @@ transporter.verify((error, success) => {
     }
 });
 
-router.post('/contact', (req, res, next) => {
+router.post('/www/contact', (req, res, next) => {
     var firstName = req.body.firstName
     var lastName = req.body.lastName
     var email = req.body.email

@@ -43,14 +43,14 @@ function handleSubmit(e){
     }
     axios({
         method: "POST",
-        url:"https://www.getaiblocks.com/api/contact/",
+        url:"https://www.getaiblocks.com/api/www/contact/",
         data: contactState
     }).then((response)=>{
         if (response.data.status === 'success') {
-            alert("Message Sent.");
+            alert("Message sent! Looking forward to help.");
             resetForm()
         } else if (response.data.status === 'fail') {
-            alert("Message failed to send.")
+            alert("Message failed to send. Please try again.")
         }
     })
 }
