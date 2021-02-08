@@ -43,7 +43,7 @@ function handleSubmit(e){
     }
     axios({
         method: "POST",
-        url:"http://www.getaiblocks.com:3000/api/v1/contact/",
+        url:"http://www.getaiblocks.com/api/www/contact/",
         data: contactState
     }).then((response)=>{
         if (response.data.status === 'success') {
@@ -166,7 +166,7 @@ function Home() {
                             desc={<p>Custom license plate reader <p className="accent">specifically for Hong Kong
                                 license plates.</p> With support for deep learning license plate deskew, and multi-line
                                 license plates.</p>}
-                            src="/static/vid/plate.mp4"
+                            src="plate"
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -175,7 +175,7 @@ function Home() {
                             desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
                                 The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
                                 With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
-                            src="/static/vid/train_station.mp4"
+                            src="train_station"
                         />
                     </Grid>
                 </Grid>
