@@ -1,21 +1,22 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const cors = require('cors');
 
-const router = express.Router();
+var router = express.Router();
 
 const myOAuth2Client = new OAuth2(
     "279479169470-ilb1imlkk7et7jr906ad772b4g8h2esv.apps.googleusercontent.com",
     "Uv2JXlhRTomwvsPUnaLL1fYo",
-);
+)
 
 myOAuth2Client.setCredentials({
     refresh_token: "1//04INf4Iblbx5JCgYIARAAGAQSNwF-L9Ir6tDD9KOq65hyGxVEcig9Y2CKikI3qWd4QlFzSwBTLZAN2YJK8aQvL-75dgd6-6Pq0vw"
 });
 
-const myAccessToken = myOAuth2Client.getAccessToken();
+const myAccessToken = myOAuth2Client.getAccessToken()
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -36,19 +37,19 @@ transporter.verify((error, success) => {
     }
 });
 
-router.post('contact', (req, res, next) => {
-    var firstName = req.body.firstName;
-    var lastName = req.body.lastName;
-    var email = req.body.email;
-    var message = req.body.message;
-    var content = `first: ${firstName} \n last: ${lastName} \n email: ${email} \n message: ${message}`;
+router.post('/contact', (req, res, next) => {
+    var firstName = req.body.firstName
+    var lastName = req.body.lastName
+    var email = req.body.email
+    var message = req.body.message
+    var content = `first: ${firstName} \n last: ${lastName} \n email: ${email} \n message: ${message} `
 
     var mail = {
         from: 'admin@getaiblocks.com',
         to: 'admin@getaiblocks.com',  // Change to email address that you want to receive messages on
         subject: 'New Message from Contact Form',
         text: content
-    };
+    }
 
     transporter.sendMail(mail, (err, data) => {
         if (err) {
@@ -61,10 +62,10 @@ router.post('contact', (req, res, next) => {
             })
         }
     })
-});
+})
 
-const app = express();
-app.use(cors());
-app.use(express.json());
-app.use('/', router);
-app.listen(3000);
+const app = express()
+app.use(cors())
+app.use(express.json())
+app.use('/', router)
+app.listen(3000)
