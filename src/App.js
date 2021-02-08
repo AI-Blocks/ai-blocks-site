@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './Fonts.css'
 import './Colors.css'
 import './App.css';
@@ -18,6 +19,66 @@ import {
     Link
 } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
+
+const emailRegex = new RegExp("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])");
+
+let contactState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: ''
+};
+
+function handleSubmit(e){
+    e.preventDefault();
+    //Add any verification logic here:
+    if (!contactState.firstName) {
+        alert("Please put a first name.")
+    } else if (!contactState.lastName) {
+        alert("Please put a last name.")
+    } else if (!emailRegex.test(contactState.email)) {
+        alert("Please input a valid email.")
+    } else if (!contactState.message) {
+        alert("Please put a message.")
+    }
+    axios({
+        method: "POST",
+        url:"http://localhost:3002/send",
+        data: contactState
+    }).then((response)=>{
+        if (response.data.status === 'success') {
+            alert("Message Sent.");
+            resetForm()
+        } else if (response.data.status === 'fail') {
+            alert("Message failed to send.")
+        }
+    })
+}
+
+function resetForm(){
+    contactState = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: ''
+    }
+}
+
+function onFirstChange(event) {
+    contactState.firstName = event.target.value
+}
+
+function onLastChange(event) {
+    contactState.lastName = event.target.value
+}
+
+function onEmailChange(event) {
+    contactState.email = event.target.value
+}
+
+function onMessageChange(event) {
+    contactState.message = event.target.value
+}
 
 export default function App() {
     return (
@@ -120,7 +181,7 @@ function Home() {
                 </Grid>
             </SectionComponent>
             <SectionComponent id={"contact"} theme={"dark"}>
-                <form id={"contactForm"}>
+                <form id={"contactForm"} onSubmit={handleSubmit.bind(this)} method="POST">
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={12}>
                             <h2 className={"accent"}>Contact Us</h2>
@@ -129,12 +190,13 @@ function Home() {
                             <p className={"white"}>We'd love to hear about how we can help you with AI 🤖</p>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                                <input name="firstName" placeholder="First name" />
-                                <input name="lastName" placeholder="Last name" />
-                                <input name="email" placeholder="Email" />
+                                <input id="firstName" placeholder="First name" onChange={onFirstChange.bind(this)}/>
+                                <input id="lastName" placeholder="Last name" onChange={onLastChange.bind(this)}/>
+                                <input id="email" placeholder="Email" onChange={onEmailChange.bind(this)}/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <textarea name="comment" form="contactForm" placeholder="Enter text here..." />
+                            <textarea id="message" form="contactForm" placeholder="Enter text here..."
+                                      onChange={onMessageChange.bind(this)}/>
                         </Grid>
                         <Grid item xs={12} sm={12}>
                             <input type="submit" />
