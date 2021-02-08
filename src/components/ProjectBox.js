@@ -9,7 +9,7 @@ export function ProjectBox(props) {
     return(
         <div className="boxContainer" ref={wrapperBoxRef}>
             <HoverVideoPlayer
-                videoSrc={"static/vid/" + props.src  + ".mp3"}
+                videoSrc={"static/vid/" + props.src  + ".mp4"}
                 pausedOverlay={
                     <div style={{
                         backgroundImage: "url(static/vid/thumbnails/" + props.src  + ".jpg)",
