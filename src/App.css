@@ -25,11 +25,16 @@ img {
     height: 60px;
 }
 
+#animation-wrapper {
+    overflow-x: hidden;
+    width: 100vw;
+}
+
 #animation {
     width: 118vw;
     height: 60vw;
     padding: 0;
-    position: absolute;
+    position: fixed;
     left: 0;
     margin-left: -14vw;
     margin-top: -40vw;
@@ -65,11 +70,16 @@ nav ul li {
     margin-left: min(1.3em, 2vw);
 }
 
+nav ul li:hover {
+    cursor: pointer;
+}
+
 nav ul li a {
     text-decoration: none;
-    color: var(--color-accent);
+    color: white;
     font-family: "Proxima Nova Bold", sans-serif;
     font-size: 1.2em;
+
 }
 
 h1 {
@@ -83,9 +93,31 @@ h2 {
     margin: 0;
 }
 
+.blend {
+    color: var(--color-accent);
+    mix-blend-mode: difference;
+}
+
 h3 {
-    font-size: 1.5em;
+    font-family: 'Proxima Nova Semibold', sans-serif;
+    font-size: 1.6em;
     margin: 0;
+    color: var(--color-accent-dark);
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 2em;
+    font-family: 'Proxima Nova Semibold', sans-serif;
+}
+
+p .accent {
+    display: inline;
+    font-size: 1em;
+}
+
+.white {
+    color: white;
 }
 
 .accent {
@@ -114,6 +146,56 @@ h3 {
     text-align: center;
 }
 
+form {
+    width: 100%;
+}
+
+select,
+input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    color: grey
+}
+
+textarea {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    height: 150px;
+    color: grey;
+    resize: none;
+}
+
+input[type="submit"],
+button {
+    cursor: pointer;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    padding: 20px 40px 20px 40px;
+    letter-spacing: 1px;
+    display: block;
+    appearance: none;
+    border-radius: 4px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.button-rounder {
+    border-radius: 50px;
+    letter-spacing: 0px;
+    font-size: 0.8em;
+}
+
 @media only screen and (min-width: 0px) and (max-width: 1200px){
     .wrapper {
         width: 100%
@@ -138,6 +220,10 @@ h3 {
     }
     nav ul li a {
         font-size: 1em;
+    }
+
+    img {
+        height: 40px;
     }
 }
 
