@@ -83,9 +83,11 @@ function onMessageChange(event) {
 
 export default function App() {
     return (
-        <Router>
-            <div id="animation">
-                <DotsComponent bgColor={"black"} dotColor={"white"}/>
+        <Router style={{overflowX: "hidden"}}>
+            <div id="animation-wrapper">
+                <div id="animation">
+                    <DotsComponent bgColor={"black"} dotColor={"white"}/>
+                </div>
             </div>
             <SectionComponent id={"nav"} noSpace={true}>
                 <nav>

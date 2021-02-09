@@ -3,6 +3,7 @@ section {
     padding-top: 3em;
     padding-bottom: 3em;
     margin: 0;
+    overflow-x: hidden;
 }
 
 .noSpace {
