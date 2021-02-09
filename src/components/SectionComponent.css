@@ -26,11 +26,15 @@ section {
 
 }
 
-.grey {
+.sec-theme-white {
+    background-color: white;
+}
+
+.sec-theme-grey {
     background-color: var(--color-background-grey);
 }
 
-.dark {
+.sec-theme-dark {
     background-color: var(--color-accent-dark);
 }
 

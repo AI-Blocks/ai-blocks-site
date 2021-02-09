@@ -8,7 +8,7 @@ function SectionComponent(props) {
     const spaceClass = props.noSpace ? "noSpace": "defaultSection";
     return (
         <Element name={props.id}>
-            <section className={theme + " " + spaceClass}>
+            <section className={"sec-theme-" + theme + " " + spaceClass}>
                 <div className="wrapper">
                     <div className="content">
                         {props.children}

@@ -30,7 +30,7 @@ img {
     width: 118vw;
     height: 60vw;
     padding: 0;
-    position: absolute;
+    position: fixed;
     left: 0;
     margin-left: -14vw;
     margin-top: -40vw;
@@ -87,6 +87,11 @@ h1 {
 h2 {
     font-size: 2em;
     margin: 0;
+}
+
+.blend {
+    color: var(--color-accent);
+    mix-blend-mode: difference;
 }
 
 h3 {

@@ -129,7 +129,7 @@ function Home() {
                     <Grid item xs={12} sm={7}>
                     </Grid>
                     <Grid item xs={12} sm={5}>
-                        <h2>To the most demanding applications.</h2>
+                        <h2 className={"blend"}>To the most demanding applications.</h2>
                     </Grid>
                     <Grid item xs={12} sm={7}>
                     </Grid>
@@ -140,7 +140,7 @@ function Home() {
                     </Grid>
                 </Grid>
             </SectionComponent>
-            <SectionComponent id={"clients"}>
+            <SectionComponent id={"clients"} theme={"white"}>
                 <Grid container spacing={5}>
                     <Grid item xs={12}>
                         <h2 className={"accent"}>Selected Clients</h2>
