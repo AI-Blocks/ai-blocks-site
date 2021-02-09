@@ -40,19 +40,20 @@ function handleSubmit(e){
         alert("Please input a valid email.")
     } else if (!contactState.message) {
         alert("Please put a message.")
+    } else {
+        axios({
+            method: "POST",
+            url:"https://www.getaiblocks.com/api/www/contact/",
+            data: contactState
+        }).then((response)=>{
+            if (response.data.status === 'success') {
+                alert("Message sent! Looking forward to help.");
+                resetForm()
+            } else if (response.data.status === 'fail') {
+                alert("Message failed to send. Please try again.")
+            }
+        })
     }
-    axios({
-        method: "POST",
-        url:"https://www.getaiblocks.com/api/www/contact/",
-        data: contactState
-    }).then((response)=>{
-        if (response.data.status === 'success') {
-            alert("Message sent! Looking forward to help.");
-            resetForm()
-        } else if (response.data.status === 'fail') {
-            alert("Message failed to send. Please try again.")
-        }
-    })
 }
 
 function resetForm(){
@@ -189,12 +190,12 @@ function Home() {
                         <Grid item xs={12} sm={12}>
                             <p className={"white"}>We'd love to hear about how we can help you with AI 🤖</p>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={4}>
                                 <input id="firstName" placeholder="First name" onChange={onFirstChange.bind(this)}/>
                                 <input id="lastName" placeholder="Last name" onChange={onLastChange.bind(this)}/>
                                 <input id="email" placeholder="Email" onChange={onEmailChange.bind(this)}/>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12} sm={8}>
                             <textarea id="message" form="contactForm" placeholder="Enter text here..."
                                       onChange={onMessageChange.bind(this)}/>
                         </Grid>
@@ -209,7 +210,7 @@ function Home() {
                         <Grid item xs={12} sm={4}>
                         </Grid>
                         <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
-                            <img src="/logo_eng_ch.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
+                            <img src="/static/img/logo_eng_ch.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
                             <p className={"white"} >
                                 &#169; {new Date().getFullYear()} AI Blocks Limited
                             </p>
