@@ -216,8 +216,17 @@ button {
 
     .bgHeader {
         margin-top: 1em;
-        font-size: 4em;
+        font-size: 3.5em;
     }
+
+    nav img {
+        height: 1.4em;
+    }
+
+    nav ul {
+        margin-left: -2em;
+    }
+
     nav ul li a {
         font-size: 1em;
     }
