@@ -49,7 +49,7 @@ exports.handler = async function(req, context) {
     transporter.sendMail(mail, (err, data) => {
         if (err) {
             return {
-                err: err,
+                error: err,
                 statusCode: 400,
             };
         } else {

@@ -51,6 +51,7 @@ function handleSubmit(e){
                 alert("Message sent! Looking forward to help.");
                 resetForm()
             } else {
+                console.log(response.data.error);
                 alert("Message failed to send. Please try again.")
             }
         })
