@@ -47,6 +47,7 @@ function handleSubmit(e){
             url:"https://www.getaiblocks.com/.netlify/functions/contact",
             data: contactState
         }).then((response)=>{
+            console.log(response);
             if (response.data.statusCode === 200) {
                 alert("Message sent! Looking forward to help.");
                 resetForm()

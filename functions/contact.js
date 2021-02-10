@@ -11,7 +11,7 @@ myOAuth2Client.setCredentials({
     refresh_token: "1//04INf4Iblbx5JCgYIARAAGAQSNwF-L9Ir6tDD9KOq65hyGxVEcig9Y2CKikI3qWd4QlFzSwBTLZAN2YJK8aQvL-75dgd6-6Pq0vw"
 });
 
-const myAccessToken = myOAuth2Client.getAccessToken()
+const myAccessToken = myOAuth2Client.getAccessToken();
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
