@@ -3,8 +3,6 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
 exports.handler = async function(event, context, callback) {
-    console.log(event);
-
     const myOAuth2Client = new OAuth2(
         "279479169470-ilb1imlkk7et7jr906ad772b4g8h2esv.apps.googleusercontent.com",
         "Uv2JXlhRTomwvsPUnaLL1fYo",
@@ -29,7 +27,7 @@ exports.handler = async function(event, context, callback) {
 
     transporter.verify((error, success) => {
         if (error) {
-            console.log("TRANSPORTER ERROR:");
+            console.log("[ERROR] TRANSPORTER ERROR:");
             console.log(error);
         }
     });
@@ -38,7 +36,10 @@ exports.handler = async function(event, context, callback) {
     const lastName = event.body.lastName;
     const email = event.body.email;
     const message = event.body.message;
-    const content = `first: ${firstName} \n last: ${lastName} \n email: ${email} \n message: ${message} `;
+    const ip = event.multiValueHeaders["Client-Ip"];
+    const content = `first: ${firstName} \n last: ${lastName} \n ip: ${ip} \n email: ${email} \n message: ${message} `;
+
+    console.log(`Trying to send message: \n ${content}`);
 
     const mail = {
         from: 'admin@getaiblocks.com',
@@ -49,11 +50,13 @@ exports.handler = async function(event, context, callback) {
 
     transporter.sendMail(mail, (err, data) => {
         if (err) {
+            console.log(err, data);
             return {
                 error: err,
                 statusCode: 400,
             };
         } else {
+            console.log("Successfully sent message.");
             return {
                 statusCode: 200,
             }
