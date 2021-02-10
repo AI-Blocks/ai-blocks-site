@@ -140,7 +140,7 @@ function Home() {
                     </Grid>
                     <Grid item xs={12} sm={5} style={{textAlign: 'right'}}>
                         <ScrollLink to="projects" smooth={true} duration={500}>
-                           <button className={"button-rounder"}><h2>See projects &rarr;</h2></button>
+                            <button className={"button-rounder"}><h2>See projects &rarr;</h2></button>
                         </ScrollLink>
                     </Grid>
                 </Grid>
@@ -197,9 +197,9 @@ function Home() {
                                 <span role="img" aria-label="robot emoji"> 🤖</span></p>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                                <input id="firstName" placeholder="First name" onChange={onFirstChange.bind(this)}/>
-                                <input id="lastName" placeholder="Last name" onChange={onLastChange.bind(this)}/>
-                                <input id="email" placeholder="Email" onChange={onEmailChange.bind(this)}/>
+                            <input id="firstName" placeholder="First name" onChange={onFirstChange.bind(this)}/>
+                            <input id="lastName" placeholder="Last name" onChange={onLastChange.bind(this)}/>
+                            <input id="email" placeholder="Email" onChange={onEmailChange.bind(this)}/>
                         </Grid>
                         <Grid item xs={12} sm={8}>
                             <textarea id="message" form="contactForm" placeholder="Enter text here..."
@@ -212,16 +212,16 @@ function Home() {
                 </form>
             </SectionComponent>
             <SectionComponent id={"footer"} theme={"dark"}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={4}>
-                        </Grid>
-                        <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
-                            <img src="/static/img/logo_eng_ch.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
-                            <p className={"white"} >
-                                &#169; {new Date().getFullYear()} AI Blocks Limited
-                            </p>
-                        </Grid>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} sm={4}>
                     </Grid>
+                    <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
+                        <img src="/static/img/logo_eng_ch.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
+                        <p className={"white"} >
+                            &#169; {new Date().getFullYear()} AI Blocks Limited
+                        </p>
+                    </Grid>
+                </Grid>
             </SectionComponent>
         </div>
     );

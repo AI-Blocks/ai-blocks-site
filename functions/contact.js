@@ -2,7 +2,9 @@ const nodemailer = require('nodemailer');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
-exports.handler = async function(req, context) {
+exports.handler = async function(event, context, callback) {
+    console.log(event);
+
     const myOAuth2Client = new OAuth2(
         "279479169470-ilb1imlkk7et7jr906ad772b4g8h2esv.apps.googleusercontent.com",
         "Uv2JXlhRTomwvsPUnaLL1fYo",
@@ -27,16 +29,15 @@ exports.handler = async function(req, context) {
 
     transporter.verify((error, success) => {
         if (error) {
+            console.log("TRANSPORTER ERROR:");
             console.log(error);
-        } else {
-            console.log('Server is ready to take messages');
         }
     });
 
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const email = req.body.email;
-    const message = req.body.message;
+    const firstName = event.body.firstName;
+    const lastName = event.body.lastName;
+    const email = event.body.email;
+    const message = event.body.message;
     const content = `first: ${firstName} \n last: ${lastName} \n email: ${email} \n message: ${message} `;
 
     const mail = {
