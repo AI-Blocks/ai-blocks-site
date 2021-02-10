@@ -44,7 +44,7 @@ function handleSubmit(e){
     } else {
         axios({
             method: "POST",
-            url:"https://www.getaiblocks.com/.netlify/functions/www/contact",
+            url:"https://www.getaiblocks.com/.netlify/functions/contact",
             data: contactState
         }).then((response)=>{
             if (response.data.statusCode === 200) {
