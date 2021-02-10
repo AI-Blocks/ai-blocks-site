@@ -1,11 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
-const cors = require('cors');
-
-var router = express.Router();
+const serverless = require('serverless-http');
+const app = express();
 
 const myOAuth2Client = new OAuth2(
     "279479169470-ilb1imlkk7et7jr906ad772b4g8h2esv.apps.googleusercontent.com",
@@ -37,7 +35,7 @@ transporter.verify((error, success) => {
     }
 });
 
-router.post('/www/contact', (req, res, next) => {
+app.post('/', (req, res, next) => {
     var firstName = req.body.firstName
     var lastName = req.body.lastName
     var email = req.body.email
@@ -64,8 +62,5 @@ router.post('/www/contact', (req, res, next) => {
     })
 })
 
-const app = express()
-app.use(cors())
-app.use(express.json())
-app.use('/', router)
-app.listen(3000)
+
+module.exports.handler = serverless(app);

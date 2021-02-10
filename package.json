@@ -27,6 +27,7 @@
     "react-scripts": "3.4.1",
     "react-scroll": "^1.8.1",
     "react-three-fiber": "^5.3.12",
+    "serverless-http": "^2.7.0",
     "three": "^0.124.0"
   },
   "scripts": {
