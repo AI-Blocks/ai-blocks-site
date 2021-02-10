@@ -1,14 +1,11 @@
-const express = require('express');
 const nodemailer = require('nodemailer');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
-const serverless = require('serverless-http');
-const app = express();
 
 const myOAuth2Client = new OAuth2(
     "279479169470-ilb1imlkk7et7jr906ad772b4g8h2esv.apps.googleusercontent.com",
     "Uv2JXlhRTomwvsPUnaLL1fYo",
-)
+);
 
 myOAuth2Client.setCredentials({
     refresh_token: "1//04INf4Iblbx5JCgYIARAAGAQSNwF-L9Ir6tDD9KOq65hyGxVEcig9Y2CKikI3qWd4QlFzSwBTLZAN2YJK8aQvL-75dgd6-6Pq0vw"
@@ -35,32 +32,30 @@ transporter.verify((error, success) => {
     }
 });
 
-app.post('/', (req, res, next) => {
-    var firstName = req.body.firstName
-    var lastName = req.body.lastName
-    var email = req.body.email
-    var message = req.body.message
-    var content = `first: ${firstName} \n last: ${lastName} \n email: ${email} \n message: ${message} `
+exports.handler = async function(req, context) {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const message = req.body.message;
+    const content = `first: ${firstName} \n last: ${lastName} \n email: ${email} \n message: ${message} `;
 
-    var mail = {
+    const mail = {
         from: 'admin@getaiblocks.com',
         to: 'admin@getaiblocks.com',  // Change to email address that you want to receive messages on
         subject: 'New Message from Contact Form',
         text: content
-    }
+    };
 
     transporter.sendMail(mail, (err, data) => {
         if (err) {
-            res.json({
-                status: 'fail'
-            })
+            return {
+                err: err,
+                statusCode: 400,
+            };
         } else {
-            res.json({
-                status: 'success'
-            })
+            return {
+                statusCode: 200,
+            }
         }
     })
-})
-
-
-module.exports.handler = serverless(app);
+};

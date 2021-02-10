@@ -47,10 +47,10 @@ function handleSubmit(e){
             url:"https://www.getaiblocks.com/.netlify/functions/www/contact",
             data: contactState
         }).then((response)=>{
-            if (response.data.status === 'success') {
+            if (response.data.statusCode === 200) {
                 alert("Message sent! Looking forward to help.");
                 resetForm()
-            } else if (response.data.status === 'fail') {
+            } else {
                 alert("Message failed to send. Please try again.")
             }
         })
