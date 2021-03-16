@@ -14,9 +14,6 @@ exports.handler = async function(event, context, callback) {
 
     const myAccessToken = myOAuth2Client.getAccessToken();
 
-    console.log("ACCESS TOKEN");
-    console.log(myAccessToken);
-
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -40,10 +37,11 @@ exports.handler = async function(event, context, callback) {
     const lastName = event.body["lastName"];
     const email = event.body["email"];
     const message = event.body["message"];
-    const ip = event.multiValueHeaders["Client-Ip"];
-    const content = `first: ${firstName} \n last: ${lastName} \n ip: ${ip} \n email: ${email} \n message: ${message} `;
-
-    console.log(`Trying to send message: \n ${content}`);
+    const ip = event.multiValueHeaders["Client-Ip"] || "None";
+    const loc = event.multiValueHeaders['x-country'] || "None";
+    const content = `first: ${firstName} \n last: ${lastName} \n country: ${loc} \n
+    ip: ${ip} \n email: ${email} \n message: ${message} \n
+    headers: ${event.multiValueHeaders}`;
 
     const mail = {
         from: 'admin@getaiblocks.com',
