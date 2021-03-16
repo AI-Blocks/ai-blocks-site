@@ -228,7 +228,7 @@ function Home() {
                     <Grid item xs={12} sm={4}>
                     </Grid>
                     <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
-                        <img src="/static/img/logo.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
+                        <img src="/static/img/logo_square.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
                         <p className={"white"} >
                             &#169; {new Date().getFullYear()} AI Blocks Limited
                         </p>
