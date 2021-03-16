@@ -8,10 +8,10 @@ import Grid from '@material-ui/core/Grid';
 import {SectionComponent} from "./components/SectionComponent";
 import {DotsComponent} from "./components/Dots";
 import {ProjectBox} from "./components/ProjectBox";
-import {
-    BrowserView,
-    MobileView,
-} from "react-device-detect";
+// import {
+//     BrowserView,
+//     MobileView,
+// } from "react-device-detect";
 import {
     BrowserRouter as Router,
     Switch,
