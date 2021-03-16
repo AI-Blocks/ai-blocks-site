@@ -37,7 +37,8 @@ export function ProjectBox(props) {
                         position: 'relative',
                         left: '0',
                         top: '0',
-                        opacity: '1'
+                        opacity: '1',
+                        overflow: 'hidden'
                     }}
                     sizingMode="container"
                     hoverTargetRef={wrapperBoxRef}
