@@ -61,7 +61,7 @@ exports.handler = async function(event, context, callback) {
         const ip = event.multiValueHeaders["Client-Ip"] || "None";
         const loc = event.headers['x-country'] || "None";
         const msg = `first: ${firstName} \n last: ${lastName} \n country: ${loc} \n ip: ${ip} \n email: ${email} \n message: ${message}`;
-        const content = msg + `\n headers: ${event}`
+        const content = msg + `\n headers: ${JSON.stringify(event)}`
 
         const mail = {
             from: 'admin@getaiblocks.com',
