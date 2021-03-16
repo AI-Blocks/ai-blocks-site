@@ -30,19 +30,19 @@ exports.handler = async function(event, context, callback) {
 
         transporter.verify((error, success) => {
             if (error) {
-                console.log("[ERROR] TRANSPORTER ERROR:");
-                console.log(error);
+                console.log(`[ERROR] TRANSPORTER ERROR: ${error}`);
             }
         });
         console.log(event)
-        const firstName = event.body["firstName"];
-        const lastName = event.body["lastName"];
-        const email = event.body["email"];
-        const message = event.body["message"];
+        const body = JSON.parse(event.body)
+        const firstName = body["firstName"];
+        const lastName = body["lastName"];
+        const email = body["email"];
+        const message = body["message"];
         const ip = event.multiValueHeaders["Client-Ip"] || "None";
-        const loc = event.multiValueHeaders['x-country'] || "None";
+        const loc = event.headers['x-country'] || "None";
         const msg = `first: ${firstName} \n last: ${lastName} \n country: ${loc} \n ip: ${ip} \n email: ${email} \n message: ${message}`;
-        const content = msg + `\n headers: ${event.multiValueHeaders}`
+        const content = msg + `\n headers: ${event}`
         console.log(msg)
 
         const mail = {
