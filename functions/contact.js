@@ -2,6 +2,26 @@ const nodemailer = require('nodemailer');
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 
+function sendMail(transporter, mailOptions) {
+    return new Promise(function (resolve, reject){
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.log("error: ", err);
+                reject({
+                    "body": err,
+                    "statusCode": 400,
+                });
+            } else {
+                console.log(`Mail sent successfully!`);
+                resolve({
+                    "statusCode": 200
+                });
+            }
+        });
+    });
+
+}
+
 exports.handler = async function(event, context, callback) {
     try {
         console.log("Trying to send message...")
@@ -51,21 +71,7 @@ exports.handler = async function(event, context, callback) {
             subject: 'New Message from Contact Form',
             text: content
         };
-
-        transporter.sendMail(mail, (err, data) => {
-            if (err) {
-                console.log(err, data);
-                return {
-                    "body": err,
-                    "statusCode": 400,
-                };
-            } else {
-                console.log("Successfully sent message.");
-                return {
-                    "statusCode": 200
-                }
-            }
-        })
+        return await sendMail(transporter, mail);
     } catch (e) {
         console.log(`[ERR] ${e}.`)
         return {
