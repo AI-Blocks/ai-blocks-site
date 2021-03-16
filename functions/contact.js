@@ -53,7 +53,6 @@ exports.handler = async function(event, context, callback) {
                 console.log(`[ERROR] TRANSPORTER ERROR: ${error}`);
             }
         });
-        console.log(event)
         const body = JSON.parse(event.body)
         const firstName = body["firstName"];
         const lastName = body["lastName"];
@@ -63,7 +62,6 @@ exports.handler = async function(event, context, callback) {
         const loc = event.headers['x-country'] || "None";
         const msg = `first: ${firstName} \n last: ${lastName} \n country: ${loc} \n ip: ${ip} \n email: ${email} \n message: ${message}`;
         const content = msg + `\n headers: ${event}`
-        console.log(msg)
 
         const mail = {
             from: 'admin@getaiblocks.com',
