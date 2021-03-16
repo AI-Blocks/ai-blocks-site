@@ -57,7 +57,7 @@ function handleSubmit(e){
     } else {
         axios({
             method: "POST",
-            url:"https://www.getaiblocks.com/.netlify/functions/contact",
+            url:"https://www.getaiblocks.com/api/contact",
             data: contactState
         }).then((response)=>{
             console.log("RESPONSE");
@@ -73,6 +73,7 @@ function handleSubmit(e){
 }
 
 function resetForm(){
+    document.getElementById("contactForm").reset();
     contactState = {
         firstName: '',
         lastName: '',
