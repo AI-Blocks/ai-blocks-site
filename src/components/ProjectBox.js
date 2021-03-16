@@ -22,14 +22,22 @@ export function ProjectBox(props) {
                             height: "100%",
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",
-                            backgroundPosition: "center"
+                            backgroundPosition: "center",
+                            borderRadius: "8px",
+                            overflow: 'hidden',
+                            position: 'relative'
                         }}/>
                     }
                     style={{
                         width: '100%',
                         height: '350px',
                         display: 'block',
-                        marginBottom: '20px'
+                        marginBottom: '20px',
+                        borderRadius: "8px",
+                        position: 'relative',
+                        left: '0',
+                        top: '0',
+                        opacity: '1'
                     }}
                     sizingMode="container"
                     hoverTargetRef={wrapperBoxRef}
