@@ -20,6 +20,7 @@
     "react": "^16.13.1",
     "react-device-detect": "^1.15.0",
     "react-dom": "^16.13.1",
+    "react-ga": "^3.3.0",
     "react-helmet": "^6.1.0",
     "react-hover-video-player": "^6.7.0",
     "react-lazyload": "^3.1.1",
