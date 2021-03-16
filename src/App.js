@@ -20,7 +20,15 @@ import {
 } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import ReactGA from 'react-ga';
+import { createBrowserHistory } from 'history';
 
+const history = createBrowserHistory();
+
+// Initialize google analytics page view tracking
+history.listen(location => {
+    ReactGA.set({ page: location.pathname }); // Update the user's current page
+    ReactGA.pageview(location.pathname); // Record a pageview for the given page
+});
 
 const trackingId = "G-WL13LKQHXM"; // Replace with your Google Analytics tracking ID
 ReactGA.initialize(trackingId);
@@ -91,7 +99,7 @@ function onMessageChange(event) {
 
 export default function App() {
     return (
-        <Router style={{overflowX: "hidden"}}>
+        <Router style={{overflowX: "hidden"}} history={history}>
             <div id="animation-wrapper">
                 <div id="animation">
                     <DotsComponent bgColor={"black"} dotColor={"white"}/>
