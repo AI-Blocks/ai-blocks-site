@@ -1,9 +1,15 @@
 .boxContainer {
     background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
 }
 
 .boxContainer:hover {
     box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0), 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
     /*cursor: pointer;*/
 }
 

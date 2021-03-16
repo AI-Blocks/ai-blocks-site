@@ -8,10 +8,10 @@ import Grid from '@material-ui/core/Grid';
 import {SectionComponent} from "./components/SectionComponent";
 import {DotsComponent} from "./components/Dots";
 import {ProjectBox} from "./components/ProjectBox";
-import {
-    BrowserView,
-    MobileView,
-} from "react-device-detect";
+// import {
+//     BrowserView,
+//     MobileView,
+// } from "react-device-detect";
 import {
     BrowserRouter as Router,
     Switch,
@@ -19,6 +19,19 @@ import {
     Link
 } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
+import ReactGA from 'react-ga';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+
+// Initialize google analytics page view tracking
+history.listen(location => {
+    ReactGA.set({ page: location.pathname }); // Update the user's current page
+    ReactGA.pageview(location.pathname); // Record a pageview for the given page
+});
+
+const trackingId = "G-WL13LKQHXM"; // Replace with your Google Analytics tracking ID
+ReactGA.initialize(trackingId);
 
 // eslint-disable-next-line no-control-regex
 const emailRegex = new RegExp("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])");
@@ -44,10 +57,12 @@ function handleSubmit(e){
     } else {
         axios({
             method: "POST",
-            url:"https://www.getaiblocks.com/.netlify/functions/www/contact",
+            url:"https://www.getaiblocks.com/api/contact",
             data: contactState
         }).then((response)=>{
-            if (response.data.statusCode === 200) {
+            console.log("RESPONSE");
+            console.log(response);
+            if (response.status === 200) {
                 alert("Message sent! Looking forward to help.");
                 resetForm()
             } else {
@@ -58,6 +73,7 @@ function handleSubmit(e){
 }
 
 function resetForm(){
+    document.getElementById("contactForm").reset();
     contactState = {
         firstName: '',
         lastName: '',
@@ -84,7 +100,7 @@ function onMessageChange(event) {
 
 export default function App() {
     return (
-        <Router style={{overflowX: "hidden"}}>
+        <Router style={{overflowX: "hidden"}} history={history}>
             <div id="animation-wrapper">
                 <div id="animation">
                     <DotsComponent bgColor={"black"} dotColor={"white"}/>
@@ -126,8 +142,7 @@ function Home() {
                 <TitleComponent title={"Home | AI Blocks"}/>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <BrowserView><h1 className="bgHeader bgHeaderFancy">WE FIND AI SOLUTIONS</h1></BrowserView>
-                        <MobileView><h1 className="bgHeader">WE FIND AI SOLUTIONS</h1></MobileView>
+                        <h1 className="bgHeader">WE FIND AI SOLUTIONS</h1>
                     </Grid>
                     <Grid item xs={12} sm={7}>
                     </Grid>
@@ -138,7 +153,7 @@ function Home() {
                     </Grid>
                     <Grid item xs={12} sm={5} style={{textAlign: 'right'}}>
                         <ScrollLink to="projects" smooth={true} duration={500}>
-                           <button className={"button-rounder"}><h2>See projects &rarr;</h2></button>
+                            <button><h2>See projects &rarr;</h2></button>
                         </ScrollLink>
                     </Grid>
                 </Grid>
@@ -195,9 +210,9 @@ function Home() {
                                 <span role="img" aria-label="robot emoji"> 🤖</span></p>
                         </Grid>
                         <Grid item xs={12} sm={4}>
-                                <input id="firstName" placeholder="First name" onChange={onFirstChange.bind(this)}/>
-                                <input id="lastName" placeholder="Last name" onChange={onLastChange.bind(this)}/>
-                                <input id="email" placeholder="Email" onChange={onEmailChange.bind(this)}/>
+                            <input id="firstName" placeholder="First name" onChange={onFirstChange.bind(this)}/>
+                            <input id="lastName" placeholder="Last name" onChange={onLastChange.bind(this)}/>
+                            <input id="email" placeholder="Email" onChange={onEmailChange.bind(this)}/>
                         </Grid>
                         <Grid item xs={12} sm={8}>
                             <textarea id="message" form="contactForm" placeholder="Enter text here..."
@@ -210,16 +225,16 @@ function Home() {
                 </form>
             </SectionComponent>
             <SectionComponent id={"footer"} theme={"dark"}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={4}>
-                        </Grid>
-                        <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
-                            <img src="/static/img/logo_eng_ch.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
-                            <p className={"white"} >
-                                &#169; {new Date().getFullYear()} AI Blocks Limited
-                            </p>
-                        </Grid>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} sm={4}>
                     </Grid>
+                    <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
+                        <img src="/static/img/logo_square.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
+                        <p className={"white"} >
+                            &#169; {new Date().getFullYear()} AI Blocks Limited
+                        </p>
+                    </Grid>
+                </Grid>
             </SectionComponent>
         </div>
     );
