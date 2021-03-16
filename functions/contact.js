@@ -34,15 +34,14 @@ exports.handler = async function(event, context, callback) {
                 console.log(error);
             }
         });
-
+        console.log(event)
         const firstName = event.body["firstName"];
         const lastName = event.body["lastName"];
         const email = event.body["email"];
         const message = event.body["message"];
         const ip = event.multiValueHeaders["Client-Ip"] || "None";
         const loc = event.multiValueHeaders['x-country'] || "None";
-        const msg = `first: ${firstName} \n last: ${lastName} \n country: ${loc} \n
-    ip: ${ip} \n email: ${email} \n message: ${message}`;
+        const msg = `first: ${firstName} \n last: ${lastName} \n country: ${loc} \n ip: ${ip} \n email: ${email} \n message: ${message}`;
         const content = msg + `\n headers: ${event.multiValueHeaders}`
         console.log(msg)
 
