@@ -1,8 +1,9 @@
-const { nodemailer } = require('nodemailer');
-const { google } = require("googleapis");
-const OAuth2 = google.auth.OAuth2;
-
 exports.handler = async function(event, context, callback) {
+    const { nodemailer } = require('nodemailer');
+    const { google } = require("googleapis");
+    const OAuth2 = google.auth.OAuth2;
+    
+    console.log(nodemailer)
     console.log(event);
 
     const myOAuth2Client = new OAuth2(
