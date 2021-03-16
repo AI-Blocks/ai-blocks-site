@@ -141,8 +141,7 @@ function Home() {
                 <TitleComponent title={"Home | AI Blocks"}/>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <BrowserView><h1 className="bgHeader bgHeaderFancy">WE FIND AI SOLUTIONS</h1></BrowserView>
-                        <MobileView><h1 className="bgHeader">WE FIND AI SOLUTIONS</h1></MobileView>
+                        <h1 className="bgHeader">WE FIND AI SOLUTIONS</h1>
                     </Grid>
                     <Grid item xs={12} sm={7}>
                     </Grid>
@@ -153,7 +152,7 @@ function Home() {
                     </Grid>
                     <Grid item xs={12} sm={5} style={{textAlign: 'right'}}>
                         <ScrollLink to="projects" smooth={true} duration={500}>
-                            <button className={"button-rounder"}><h2>See projects &rarr;</h2></button>
+                            <button><h2>See projects &rarr;</h2></button>
                         </ScrollLink>
                     </Grid>
                 </Grid>
@@ -229,7 +228,7 @@ function Home() {
                     <Grid item xs={12} sm={4}>
                     </Grid>
                     <Grid item xs={12} sm={8} style={{textAlign: "right"}}>
-                        <img src="/static/img/logo_eng_ch.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
+                        <img src="/static/img/logo.png" alt="AI Blocks, 智能快" style={{height: "100px"}}/>
                         <p className={"white"} >
                             &#169; {new Date().getFullYear()} AI Blocks Limited
                         </p>

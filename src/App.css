@@ -56,7 +56,7 @@ nav {
 
 nav img {
     margin:0;
-    height: 1.5em;
+    height: 2.2em;
 }
 
 nav ul {
@@ -130,7 +130,7 @@ p .accent {
 
 .bgHeader {
     position: relative;
-    margin-top: 1.5em;
+    margin-top: 0.8em;
     margin-bottom: 0;
     text-align: center;
     color: var(--color-accent);
@@ -155,7 +155,7 @@ input {
     display: block;
     box-sizing: border-box;
     width: 100%;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px solid white;
     padding: 10px 15px;
     margin-bottom: 15px;
@@ -166,7 +166,7 @@ textarea {
     width: 100%;
     display: block;
     box-sizing: border-box;
-    border-radius: 4px;
+    border-radius: 8px;
     border: 1px solid white;
     padding: 10px 15px;
     margin-bottom: 15px;
@@ -185,7 +185,7 @@ button {
     letter-spacing: 1px;
     display: block;
     appearance: none;
-    border-radius: 4px;
+    border-radius: 8px;
     outline: none !important;
     box-shadow: none !important;
 }
