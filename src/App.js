@@ -181,6 +181,24 @@ function Home() {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <ProjectBox
+                            name="Train Station Safety Net"
+                            desc={<p>Detects when passengers have fallen over, crossed track limits, or entered the track area.
+                                The AI <p className="accent">alerts staff members,</p> so that they can provide immediate assistance.
+                                With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
+                            src="train_station"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <ProjectBox
+                            name="Railway Collision Prevention"
+                            desc={<p>Provides real-time tracking of railroad switches and trains to <p className="accent">prevent derailing
+                                and collisions.</p> Safeguards passengers in one of the largest stations of a railway network serving
+                                <p className="accent"> over 1 billion passengers per year.</p></p>}
+                            src="hung_hom"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <ProjectBox
                             name="Deep Learning License Plate Reader"
                             desc={<p>Custom license plate reader <p className="accent">specifically for Hong Kong
                                 license plates.</p> With support for deep learning license plate deskew, and multi-line
@@ -190,29 +208,11 @@ function Home() {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <ProjectBox
-                            name="Train Station Safety Net"
-                            desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
-                                The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
-                                With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
-                            src="train_station"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <ProjectBox
-                            name="Train Station Safety Net"
-                            desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
-                                The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
-                                With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
-                            src="train_station"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <ProjectBox
-                            name="Train Station Safety Net"
-                            desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
-                                The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
-                                With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
-                            src="train_station"
+                            name="Train Station Passenger Assistance AI"
+                            desc={<p>Identifies passengers with wheelchairs, white canes, and raised hands, enabling staff
+                                to <p className="accent">meet passenger needs.</p> Detection of hazardous items <p className="accent">protects
+                                passengers and railway infrastructure.</p></p>}
+                            src="kai_tak"
                         />
                     </Grid>
                 </Grid>

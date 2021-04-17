@@ -6,7 +6,7 @@ dir = os.path.split(file_path)[0]
 static = os.path.join("public", "static")
 
 vid_folder = os.path.join(dir, os.path.join(static, "vid"))
-thumbs_folder = os.path.join(dir, os.path.join(static, "thumbnails"))
+thumbs_folder = os.path.join(dir, os.path.join(vid_folder, "thumbnails"))
 width = 400
 
 for f in os.listdir(vid_folder):
@@ -17,8 +17,9 @@ for f in os.listdir(vid_folder):
         vid = cv2.VideoCapture(p)
         success, img = vid.read()
         h, w, channels = img.shape
-        img = cv2.resize(img, ((h/w)*width, width))
+        if w >= h:
+            img = cv2.resize(img, (int((w/h)*width), width))
+        else:
+            img = cv2.resize(img, (width, int((h/w)*width)))
         cv2.imwrite(t, img)
         vid.release()
-
-        os.system(f'ffmpeg -i {p} -vf "select=eq(n\,0)" -vf scale={width}:-2 -q:v 3 {t}')
