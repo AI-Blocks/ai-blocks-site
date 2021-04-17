@@ -197,6 +197,24 @@ function Home() {
                             src="train_station"
                         />
                     </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <ProjectBox
+                            name="Train Station Safety Net"
+                            desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
+                                The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
+                                With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
+                            src="train_station"
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <ProjectBox
+                            name="Train Station Safety Net"
+                            desc={<p>Detect when passengers are on wheelchairs, using blind canes or have fallen over.
+                                The AI <p className="accent">alerts station staff,</p> so that they can provide assistance.
+                                With AI, we can help <p className="accent">make journeys safer for all.</p></p>}
+                            src="train_station"
+                        />
+                    </Grid>
                 </Grid>
             </SectionComponent>
             <SectionComponent id={"contact"} theme={"dark"}>

@@ -1,12 +1,3 @@
-"""
-Generate thumbnails for every video in the 'vid' folder, taking the first frame.
-
-Setup, in Terminal:
-
-1. /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-2. brew install ffmpeg
-"""
-
 import os
 
 file_path = os.path.realpath(__file__)
