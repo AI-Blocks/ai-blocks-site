@@ -14,21 +14,13 @@ import {ProjectBox} from "./components/ProjectBox";
 // } from "react-device-detect";
 import {
     BrowserRouter as Router,
+    useLocation,
     Switch,
     Route,
     Link
 } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import ReactGA from 'react-ga';
-import { createBrowserHistory } from 'history';
-
-const history = createBrowserHistory();
-
-// Initialize google analytics page view tracking
-history.listen(location => {
-    ReactGA.set({ page: location.pathname }); // Update the user's current page
-    ReactGA.pageview(location.pathname); // Record a pageview for the given page
-});
 
 const trackingId = "G-WL13LKQHXM"; // Replace with your Google Analytics tracking ID
 ReactGA.initialize(trackingId);
@@ -100,39 +92,64 @@ function onMessageChange(event) {
 
 export default function App() {
     return (
-        <Router style={{overflowX: "hidden"}} history={history}>
-            <div id="animation-wrapper">
-                <div id="animation">
-                    <DotsComponent bgColor={"black"} dotColor={"white"}/>
-                </div>
-            </div>
-            <SectionComponent id={"nav"} noSpace={true}>
-                <nav>
-                    <Link to="/"><img src="/logo.svg" alt="Home"/></Link>
-                    <ul>
-                        <li><ScrollLink to="projects" smooth={true} duration={500}>Projects</ScrollLink></li>
-                        {/*<li><Link to="/">Delphi</Link></li>*/}
-                        <li><ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink></li>
-                        {/*<li><Link to="/about">About</Link></li>*/}
-                        {/*<li><Link to="/work">Work</Link></li>*/}
-                        {/*<li><Link to="/projects">Projects</Link></li>*/}
-                        {/*<li><Link to="/resume">Resume</Link></li>*/}
-                        {/*<li><Link to="/contact">Contact</Link></li>*/}
-                    </ul>
-                </nav>
-            </SectionComponent>
-            {/* A <Switch> looks through its children <Route>s and
-                renders the first one that matches the current URL. */}
-            <Switch>
-                <Route path="/about">
-                    <About />
-                </Route>
-                <Route path="/">
-                    <Home />
-                </Route>
-            </Switch>
+        <Router style={{overflowX: "hidden"}}>
+            <Animation />
+            <Nav />
+            <Routes />
         </Router>
     );
+}
+
+function Animation() {
+    return (
+        <div id="animation-wrapper">
+            <div id="animation">
+                <DotsComponent bgColor={"black"} dotColor={"white"}/>
+            </div>
+        </div>
+    )
+}
+
+function Nav() {
+    return (
+        <SectionComponent id={"nav"} noSpace={true}>
+            <nav>
+                <Link to="/"><img src="/logo.svg" alt="Home"/></Link>
+                <ul>
+                    <li><ScrollLink to="projects" smooth={true} duration={500}><Link to="/#projects">Projects</Link></ScrollLink></li>
+                    {/*<li><Link to="/">Delphi</Link></li>*/}
+                    <li><ScrollLink to="contact" smooth={true} duration={500}><Link to="/#contact">Contact</Link></ScrollLink></li>
+                    {/*<li><Link to="/about">About</Link></li>*/}
+                    {/*<li><Link to="/work">Work</Link></li>*/}
+                    {/*<li><Link to="/projects">Projects</Link></li>*/}
+                    {/*<li><Link to="/resume">Resume</Link></li>*/}
+                    {/*<li><Link to="/contact">Contact</Link></li>*/}
+                </ul>
+            </nav>
+        </SectionComponent>
+    )
+}
+
+function Routes() {
+    const location = useLocation();
+    React.useEffect(() => {
+        const curr = location.pathname + location.hash;
+        // console.log(`Pageview for ${curr}`)
+        ReactGA.pageview(curr);
+    }, [location]);
+
+    /* A <Switch> looks through its children <Route>s and
+    renders the first one that matches the current URL. */
+    return (
+        <Switch>
+            <Route path="/about">
+                <About />
+            </Route>
+            <Route path="/">
+                <Home />
+            </Route>
+        </Switch>
+    )
 }
 
 function Home() {

@@ -27,6 +27,7 @@ class SectionComponentDiv extends React.Component {
         this.bgComp = bgComp;
         this.bgArgs = bgArgs;
         this.props = props;
+        this.ref = React.createRef();
     }
     render() {
         return (
@@ -40,6 +41,8 @@ class SectionComponentDiv extends React.Component {
             </section>
         )
     };
+
+    executeScroll = () => this.ref.scrollIntoView();
 }
 
 export { SectionComponent, SectionComponentDiv };
