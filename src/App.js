@@ -22,7 +22,7 @@ import {
 import { Link as ScrollLink } from 'react-scroll';
 import ReactGA from 'react-ga';
 
-const trackingId = "G-WL13LKQHXM"; // Replace with your Google Analytics tracking ID
+const trackingId = "UA-192257106-1";
 ReactGA.initialize(trackingId);
 
 // eslint-disable-next-line no-control-regex
