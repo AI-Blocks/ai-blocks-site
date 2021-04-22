@@ -134,7 +134,7 @@ function Routes() {
     const location = useLocation();
     React.useEffect(() => {
         const curr = location.pathname + location.hash;
-        console.log(`Pageview for ${curr}`)
+        // console.log(`Pageview for ${curr}`)
         ReactGA.pageview(curr);
     }, [location]);
 
