@@ -12,6 +12,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "ga-4-react": "^0.1.281",
     "googleapis": "^67.0.0",
     "history": "^5.0.0",
     "node-sass": "^4.14.1",

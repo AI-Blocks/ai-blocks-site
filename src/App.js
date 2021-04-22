@@ -134,7 +134,7 @@ function Routes() {
     const location = useLocation();
     React.useEffect(() => {
         const curr = location.pathname + location.hash;
-        // console.log(`Pageview for ${curr}`)
+        console.log(`Pageview for ${curr}`)
         ReactGA.pageview(curr);
     }, [location]);
 
@@ -170,7 +170,7 @@ function Home() {
                     </Grid>
                     <Grid item xs={12} sm={5} style={{textAlign: 'right'}}>
                         <ScrollLink to="projects" smooth={true} duration={500}>
-                            <button><h2>See projects &rarr;</h2></button>
+                          <Link to="/#projects"><button><h2>See projects &rarr;</h2></button></Link>
                         </ScrollLink>
                     </Grid>
                 </Grid>
