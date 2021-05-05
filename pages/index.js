@@ -1,24 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import './Fonts.css'
-import './Colors.css'
-import './App.css';
-import {TitleComponent} from "./components/TitleComponent";
+import {TitleComponent} from "../components/TitleComponent/TitleComponent";
 import Grid from '@material-ui/core/Grid';
-import {SectionComponent} from "./components/SectionComponent";
-import {DotsComponent} from "./components/Dots";
-import {ProjectBox} from "./components/ProjectBox";
+import {SectionComponent} from "../components/SectionComponent/SectionComponent";
+import {DotsComponent} from "../components/Dots/Dots";
+import {ProjectBox} from "../components/ProjectBox/ProjectBox";
+import Link from 'next/link';
 // import {
 //     BrowserView,
 //     MobileView,
 // } from "react-device-detect";
-import {
-    BrowserRouter as Router,
-    useLocation,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import ReactGA from 'react-ga';
 
@@ -92,11 +83,11 @@ function onMessageChange(event) {
 
 export default function App() {
     return (
-        <Router style={{overflowX: "hidden"}}>
+        <div>
             <Animation />
             <Nav />
-            <Routes />
-        </Router>
+            <Home />
+        </div>
     );
 }
 
@@ -114,11 +105,11 @@ function Nav() {
     return (
         <SectionComponent id={"nav"} noSpace={true}>
             <nav>
-                <Link to="/"><img src="/logo.svg" alt="Home"/></Link>
+                <Link href="/"><img src="/logo.svg" alt="Home"/></Link>
                 <ul>
-                    <li><ScrollLink to="projects" smooth={true} duration={500}><Link to="/#projects">Projects</Link></ScrollLink></li>
+                    <li><ScrollLink to="projects" smooth={true} duration={500}>Projects</ScrollLink></li>
                     {/*<li><Link to="/">Delphi</Link></li>*/}
-                    <li><ScrollLink to="contact" smooth={true} duration={500}><Link to="/#contact">Contact</Link></ScrollLink></li>
+                    <li><ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink></li>
                     {/*<li><Link to="/about">About</Link></li>*/}
                     {/*<li><Link to="/work">Work</Link></li>*/}
                     {/*<li><Link to="/projects">Projects</Link></li>*/}
@@ -130,27 +121,27 @@ function Nav() {
     )
 }
 
-function Routes() {
-    const location = useLocation();
-    React.useEffect(() => {
-        const curr = location.pathname + location.hash;
-        // console.log(`Pageview for ${curr}`)
-        ReactGA.pageview(curr);
-    }, [location]);
-
-    /* A <Switch> looks through its children <Route>s and
-    renders the first one that matches the current URL. */
-    return (
-        <Switch>
-            <Route path="/about">
-                <About />
-            </Route>
-            <Route path="/">
-                <Home />
-            </Route>
-        </Switch>
-    )
-}
+// function Routes() {
+//     const location = useLocation();
+//     React.useEffect(() => {
+//         const curr = location.pathname + location.hash;
+//         // console.log(`Pageview for ${curr}`)
+//         ReactGA.pageview(curr);
+//     }, [location]);
+//
+//     /* A <Switch> looks through its children <Route>s and
+//     renders the first one that matches the current URL. */
+//     return (
+//         <Switch>
+//             <Route path="/about">
+//                 <About />
+//             </Route>
+//             <Route path="/">
+//                 <Home />
+//             </Route>
+//         </Switch>
+//     )
+// }
 
 function Home() {
     return (
@@ -170,7 +161,7 @@ function Home() {
                     </Grid>
                     <Grid item xs={12} sm={5} style={{textAlign: 'right'}}>
                         <ScrollLink to="projects" smooth={true} duration={500}>
-                          <Link to="/#projects"><button><h2>See projects &rarr;</h2></button></Link>
+                            <button><h2>See projects &rarr;</h2></button>
                         </ScrollLink>
                     </Grid>
                 </Grid>

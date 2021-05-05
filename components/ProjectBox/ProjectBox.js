@@ -1,8 +1,8 @@
 import React from 'react';
-import './../Colors.css'
-import './ProjectBox.css';
+import dynamic from "next/dynamic";
+import './ProjectBox.module.css';
 import PropTypes from 'prop-types';
-import HoverVideoPlayer from 'react-hover-video-player';
+const HoverVideoPlayer = dynamic(() => import('react-hover-video-player').then((a) => a.HoverVideoPlayer), {ssr: false});
 import LazyLoad from 'react-lazyload';
 
 export function ProjectBox(props) {
@@ -14,10 +14,10 @@ export function ProjectBox(props) {
                 <div style={{backgroundColor: "white", minHeight: String(height) + "px"}} />
             }>
                 <HoverVideoPlayer
-                    videoSrc={"static/vid/" + props.src  + ".mp4"}
+                    videoSrc={"/static/vid/" + props.src  + ".mp4"}
                     pausedOverlay={
                         <div style={{
-                            backgroundImage: "url(static/vid/thumbnails/" + props.src  + ".jpg)",
+                            backgroundImage: "url(/static/vid/thumbnails/" + props.src  + ".jpg)",
                             width: "100%",
                             height: "100%",
                             backgroundRepeat: "no-repeat",
@@ -58,7 +58,7 @@ export function ProjectBox(props) {
 ProjectBox.propTypes = {
     src: PropTypes.string,
     name: PropTypes.string,
-    desc: PropTypes.string,
+    desc: PropTypes.object,
     cats: PropTypes.array
 };
 

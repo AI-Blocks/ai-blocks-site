@@ -1,16 +1,27 @@
 import React from 'react';
-import './SectionComponent.css';
-import './../Colors.css'
+import styles from './SectionComponent.module.css';
 import { Element } from 'react-scroll';
 
 function SectionComponent(props) {
-    const theme = props.theme ? props.theme: "defaultSection";
-    const spaceClass = props.noSpace ? "noSpace": "defaultSection";
+    let theme = null;
+    switch (props.theme) {
+        case "dark":
+            theme = styles.secDark;
+            break;
+        case "white":
+            theme = styles.secWhite;
+            break;
+        case "grey":
+            theme = styles.secGrey;
+            break;
+        default:
+            theme = styles.secDefault;
+    }
     return (
         <Element name={props.id}>
-            <section className={"sec-theme-" + theme + " " + spaceClass}>
-                <div className="wrapper">
-                    <div className="content">
+            <section className={`${styles.section} ${theme}`}>
+                <div className={styles.wrapper}>
+                    <div className={styles.content}>
                         {props.children}
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-section {
+.section {
     z-index: -100;
     padding-top: 3em;
     padding-bottom: 3em;
@@ -23,19 +23,19 @@ section {
     z-index: -100;
 }
 
-.defaultSection {
+.secDefault {
 
 }
 
-.sec-theme-white {
+.secWhite {
     background-color: white;
 }
 
-.sec-theme-grey {
+.secGrey {
     background-color: var(--color-background-grey);
 }
 
-.sec-theme-dark {
+.secDark {
     background-color: var(--color-accent-dark);
 }
 
