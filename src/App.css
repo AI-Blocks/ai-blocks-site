@@ -42,6 +42,11 @@ img {
     z-index: -1;
     overflow-x: hidden;
     background-color: black;
+    padding: 1px;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    -webkit-background-clip:content-box;
+    background-clip:content-box;
 }
 
 nav {
