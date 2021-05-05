@@ -164,7 +164,8 @@ input {
     border: 1px solid white;
     padding: 10px 15px;
     margin-bottom: 15px;
-    color: grey
+    color: grey;
+    font-family: "Proxima Nova Bold", sans-serif;
 }
 
 textarea {
@@ -178,6 +179,7 @@ textarea {
     height: 150px;
     color: grey;
     resize: none;
+    font-family: "Proxima Nova Bold", sans-serif;
 }
 
 input[type="submit"],

@@ -241,7 +241,7 @@ function Home() {
                             <input id="email" placeholder="Email" onChange={onEmailChange.bind(this)}/>
                         </Grid>
                         <Grid item xs={12} sm={8}>
-                            <textarea id="message" form="contactForm" placeholder="Enter text here..."
+                            <textarea id="message" form="contactForm" placeholder="Feel free to say hi 👋"
                                       onChange={onMessageChange.bind(this)}/>
                         </Grid>
                         <Grid item xs={12} sm={12}>

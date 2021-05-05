@@ -1,19 +1,19 @@
 import React from 'react';
 import dynamic from "next/dynamic";
-import './ProjectBox.module.css';
+import styles from './ProjectBox.module.css';
 import PropTypes from 'prop-types';
-const HoverVideoPlayer = dynamic(() => import('react-hover-video-player').then((a) => a.HoverVideoPlayer), {ssr: false});
 import LazyLoad from 'react-lazyload';
 
 export function ProjectBox(props) {
     const wrapperBoxRef = React.useRef();
     const height= 579.19;
+    React.useEffect(() => import("react-hover-video-player"), []);
     return(
         <LazyLoad height={height} resize once>
-            <div className="boxContainer" ref={wrapperBoxRef} placeholder={
+            <div className={styles.boxContainer} ref={wrapperBoxRef} placeholder={
                 <div style={{backgroundColor: "white", minHeight: String(height) + "px"}} />
             }>
-                <HoverVideoPlayer
+                <react-hover-video-player
                     videoSrc={"/static/vid/" + props.src  + ".mp4"}
                     pausedOverlay={
                         <div style={{
@@ -46,7 +46,7 @@ export function ProjectBox(props) {
                     hoverTargetRef={wrapperBoxRef}
                     preload="metadata"
                 />
-                <div className="boxDetails">
+                <div className={styles.boxDetails}>
                     <h3>{props.name}</h3>
                     {props.desc}
                 </div>
